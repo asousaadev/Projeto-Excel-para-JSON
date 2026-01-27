@@ -1,426 +1,167 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<!-- //layets.css -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | P3Energia</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        referrerpolicy="no-referer" />bootstrap.min.css
-
-    <link rel="stylesheet" href="/frontend/src/styles/bootstrap/bootstrap-login-form.min.css">
-    <link rel="stylesheet" href="/frontend/src/styles/sass.css">
-    <link rel="stylesheet" href="/frontend/src/styles/layout.css">
-    <link rel="stylesheet" href="/frontend/src/styles/main.css">
-    <link rel="stylesheet" href="/frontend/src/styles/responsive.css">
-    <link rel="stylesheet" href="/frontend/src/styles/apexcharts.css">
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <div class="main-wrapper">
-        <!-- ----- navbar ---- -->
-        <div class="header-container fixed-top">
-            <header class="header navbar navbar-expand-sm expand-header">
-                <div class="header-left d-flex">
-                    <div class="logo">
-                        P3Energia
-                    </div>
-                    <a href="#" class="sidebarCollapse" id="toggleSidebar" data-placement="bottom">
-                        <span class="fas fa-bars"></span>
-                    </a>
-                </div>
-                <ul class="navbar-item flex-row ml-auto">
-                    <li class="nav-item dropdown user-profile-dropdown">
-                        <a href="" class="nav-link user" id="Notify" data-bs-toggle="dropdown">
-                            <img src="/frontend/src/images/bell.svg" alt="" class="icon">
-                            <p class="count purple-gradient">1</p>
+    <div class="app-container">
+        
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar__brand">
+                <i class="fas fa-bolt"></i> P3<span>Energia</span>
+            </div>
+            
+            <nav class="sidebar__nav">
+                <ul class="sidebar__list">
+                    <li class="sidebar__item">
+                        <a href="#" class="sidebar__link sidebar__link--active">
+                            <i class="fas fa-chart-pie sidebar__icon"></i>
+                            <span class="sidebar__text">Dashboard</span>
                         </a>
-                        <div class="dropdown-menu">
-                            <div class="dp-main-menu">
-                                <a href="" class="dropdown-item message-item">
-                                    <img src="/frontend/src/images/storage-device.svg" alt="" class="user-note">
-                                    <div class="note-info-desmis">
-                                        <div class="user-notify-info">
-                                            <p class="note-name">Server Rebooted</p>
-                                            <p class="note-time">20 min</p>
-                                        </div>
-                                        <p href="" class="status-link"><span class="fas fa-times"></span></p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
                     </li>
-                    <li class="nav-item dropdown user-profile-dropdown">
-                        <a href="" class="nav-link user" id="Notify" data-bs-toggle="dropdown">
-                            <img src="/frontend/src/images/setting.svg" alt="" class="icon">
-                            <p class="count bg-clc">3</p>
+                    <li class="sidebar__item">
+                        <a href="#" class="sidebar__link">
+                            <i class="fas fa-building sidebar__icon"></i>
+                            <span class="sidebar__text">Unidades</span>
                         </a>
-                        <div class="dropdown-menu">
-                            <div class="dp-main-menu">
-                                <a href="" class="dropdown-item message-item">
-                                    <img src="https://i.ibb.co/BGNkk2C/Assis.png" alt="Assis" class="sms-user" />
-                                    <div class="user-message-info">
-                                        <p class="m-user-name">Assis</p>
-                                        <p class="user-role">Admin</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
                     </li>
-                    <li class="nav-item dropdown user-profile-dropdown">
-                        <a href="" class="nav-link user" id="Notify" data-bs-toggle="dropdown">
-                            <img src="https://i.ibb.co/BGNkk2C/Assis.png" alt="Thenyson" class="icon" />
+                    <li class="sidebar__item">
+                        <a href="#" class="sidebar__link">
+                            <i class="fas fa-file-invoice-dollar sidebar__icon"></i>
+                            <span class="sidebar__text">Faturas</span>
                         </a>
-                        <div class="dropdown-menu">
-                            <div class="user-profile-section">
-                                <div class="media mx-auto">
-                                    <img src="https://i.ibb.co/BGNkk2C/Assis.png" alt="Assis"
-                                        class="img-fluid mr-2" />
-                                    <div class="media-body">
-                                        <h5>Assis Araújo</h5>
-                                        <p>Super Admin</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dp-main-menu">
-                                <a href="" class="dropdown-item"><span class="fas fa-user"></span>Profile</a>
-                                <a href="" class="dropdown-item"><span class="fas fa-inbox"></span>Inbox</a>
-                                <a href="" class="dropdown-item"><span class="fas fa-lock-open"></span>Look Screen</a>
-                                <a href="" class="dropdown-item"><span class="fas fa-outdent"></span>Log Out</a>
-                            </div>
-                        </div>
                     </li>
-                    <li class="nav-item dropdown user-profile-dropdown">
-                        <a href="" class="nav-link user" id="Notify" data-bs-toggle="dropdown">
-                            <img src="/frontend/src/images/setting.svg" alt="" class="icon">
+                    <li class="sidebar__item">
+                        <a href="#" class="sidebar__link">
+                            <i class="fas fa-chart-line sidebar__icon"></i>
+                            <span class="sidebar__text">Relatórios</span>
                         </a>
-                        <div class="dropdown-menu">
-                            <div class="dp-main-menu">
-                                <a href="" class="dropdown-item"><span class="fas fa-plug"></span>Permissões</a>
-                                <a href="" class="dropdown-item"><span class="fas fa-users"></span>Admins</a>
-                                <a href="" class="dropdown-item"><span class="fas fa-object-ungroup"></span>Design</a>
-                                <a href="" class="dropdown-item"><span class="fas fa-palette"></span>Tema</a>
-                            </div>
-                        </div>
                     </li>
-                </ul>
-            </header>
-        </div>
-    </div>
-    <!-- ----- navebar end ---- -->
-
-    <!-- sidebar Start -->
-    <div class="left-menu mt-4">
-        <div class="menubar-content">
-            <nav class="animated bounceInDown">
-                <ul id="sidebar">
-                    <li class="active">
-                        <a href="/index.html"><i class="fa-solid fa-tv"></i>Monitoramento</a>
-                    </li>
-
-                    <li class="sub-menu">
-                        <a href="#"><i class="fa-regular fa-building"></i>CDL
-                            <div class="fa fa-caret-down right"></div>
+                    <li class="sidebar__item">
+                        <a href="#" class="sidebar__link">
+                            <i class="fas fa-cog sidebar__icon"></i>
+                            <span class="sidebar__text">Configurações</span>
                         </a>
-                        <ul class="left-menu-dp">
-                            <li><a href="/frontend/src/pages/alvorada.html">Alvorada</a></li>
-                            <li><a href="/frontend/src/pages/cidadeNova.html">Cidade Nova</a></li>
-                            <li><a href="/frontend/src/pages/coroado.html">Coroado</a></li>
-                            <li><a href="/frontend/src/pages/laranjeiras.html">Parque das laranjeiras</a></li>
-                            <li><a href="/frontend/src/pages/Torres.html">Torres</a></li>
-                        </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="#"><i class="fa-regular fa-building"></i>DUNORTE
-                            <div class="fa fa-caret-down right"></div>
-                        </a>
-                        <ul class="left-menu-dp">
-                            <li><a href="/frontend/src/pages/adrianopolis.html">Adrianopolis</a></li>
-                            <li><a href="/frontend/src/pages/pontaNegra.html">Ponta Negra</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="#"><i class="fa-regular fa-building"></i>BOA VISTA
-                            <div class="fa fa-caret-down right"></div>
-                        </a>
-                        <ul class="left-menu-dp">
-                            <li><a href="/frontend/src/pages/superGiro.html">Super Giro</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#"><i class="fas fa-sign-out-alt"></i>>Sair</a></li>
                 </ul>
             </nav>
-        </div>
-    </div>
-    <!-- sidebar End -->
 
-    <div class="content-wrapper mt-4">
-        <section class="dashbord-top-sec">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md col-lx-8">
-                        <div class="bg-white top-chart-earn">
-                            <div class="row">
-                                <div class="col-sm-4 my-2 pe-0">
-                                    <div class="last-month">
-                                        <h5>Junho 2024</h5>
-                                        <p>Monitoramento Energia</p>
-                                        <div class="earn">
-                                            <!-- <h2>R$ 624.798,80</h2> -->
-                                             <h2 id="card-custo-mensal">Carregando...</h2>
-                                            <p>Custo Mensal</p>
-                                        </div>
-                                        <div class="sale mb-3">
-                                            <!-- <h2>R$ 12.827,87</h2> -->
-                                            <h2 id="card-perda-mensal">Carregando...</h2> 
-                                            <p>Perda Mensal</p>
-                                        </div>
-                                        <a href="#" class="di-btn purple-gradient">Proximo Mês</a>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 my-2 ps-0">
-                                    <div class="classic-tabs">
-                                        <!-- Nav Tabs -->
-                                        <div class="tabs-wrapper">
-                                            <ul class="nav nav-pills chart-header-tab mb-3" id="pills-tab"
-                                                role="tablist">
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link chart-nav" id="pills-custo-tab"
-                                                        data-bs-toggle="pill" data-bs-target="#pills-custo"
-                                                        type="button" role="tab" aria-controls="pills-custo"
-                                                        aria-selected="true">Custo</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link chart-nav" id="pills-historico-tab"
-                                                        data-bs-toggle="pill" data-bs-target="#pills-historico"
-                                                        type="button" role="tab" aria-controls="pills-historico"
-                                                        aria-selected="false">Histórico</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link chart-nav" id="pills-perda-tab"
-                                                        data-bs-toggle="pill" data-bs-target="#pills-perda"
-                                                        type="button" role="tab" aria-controls="pills-perda"
-                                                        aria-selected="false">Perdas</a>
-                                                </li>
-                                            </ul>
-                                            <div class="tab-content" id="pills-tabContent">
-                                                <div class="tab-pane text-center fade active show" id="pills-custo"
-                                                    role="tabpanel" aria-labelledby="pills-custo-tab">Custo Mensal
-                                                    da Energia
-                                                    <div class="widget-content">
-                                                        <canvas id="custo-mensal-1" style="margin-left: 1rem;" width="100%"
-                                                        height="250px"></canvas>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade text-center" id="pills-historico"
-                                                    role="tabpanel" aria-labelledby="pills-historico-tab">Histórico
-                                                    de Custo 12 meses
-                                                    <div class="widget-content">
-                                                        <canvas id="chart-custo-doze-meses" style="margin-left: 1rem;" width="100%"
-                                                        height="250px"></canvas>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade text-center" id="pills-perda" role="tabpanel"
-                                                    aria-labelledby="pills-perda-tab">Histórico de
-                                                    Perdas 12 meses
-                                                    <div class="widget-content">
-                                                        <canvas id="chart-perdas-3" style="margin-left: 1rem;" width="100%" height="250px">
-                                                            </canva>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="miniCard">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-6 my-1 bdr-cls">
-                                        <div class="earn-wiew">
-                                            <span class="fa fa-triangle-exclamation earn-icon wallet"></span>
-                                            <div class="earn-wiew-text">
-                                                <p class="name-text">
-                                                    Perdas
-                                                </p>
-                                                <h6 class="balance-text">
-                                                    2,05%
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 col-6 my-1 bdr-cls">
-                                        <div class="earn-wiew">
-                                            <span class="fa-solid fa-chart-column earn-icon referral"></span>
-                                            <div class="earn-wiew-text">
-                                                <p class="name-text">
-                                                    Perda Demanda
-                                                </p>
-                                                <h6 id="card-perda-demanda" class="balance-text">
-                                                    <!-- R$6.311,43 --> Carregando...
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 col-6 my-1 bdr-cls">
-                                        <div class="earn-wiew">
-                                            <span class="fa-solid fa-chart-gantt earn-icon sales"></span>
-                                            <div class="earn-wiew-text">
-                                                <p class="name-text">
-                                                    Perda Reativo
-                                                </p>
-                                                <h6 id="card-perda-reactivo" class="balance-text">
-                                                    <!-- R$ 6.516,44 --> Carregando...
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 col-6 my-1">
-                                        <div class="earn-wiew">
-                                            <span class="fa fa-chart-line earn-icon earning"></span>
-                                            <div class="earn-wiew-text">
-                                                <p class="name-text">
-                                                    Outros
-                                                </p>
-                                                <h6 class="balance-text">
-                                                    R$ 0,00
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="bg-white top-chart-earn">
-                            <div class="traffice-title">
-                                <p class="text-center">Perdas 10 Maiores</p>
-                            </div>
-                            <div class="traffic mr-1" style="height: 370px;">
-                                <canvas id="chartDezMaisPerdas"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="sidebar__footer">
+                <p>&copy; 2026 P3Energia</p>
             </div>
-        </section>
-        <section id="card">
-            <div class="sm-chart-sec my-5">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6 my-2" >
-                            <div class="revinue revinue-one_hybrid">
-                                <div class="revinue-hedding">
-                                    <div class="w-title">
-                                        <div class="w-icon">
-                                            <span class="fa-solid fa-percent"></span>
-                                        </div>
-                                        <div class="sm-chart-text">
-                                            <p class="w-value">2024</p>
-                                            <h5>Perdas </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="reveniue-content">
-                                    <div id="perdas"></div>
-                                </div>
-                            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="topbar">
+                <button class="topbar__toggle" id="sidebarToggle" aria-label="Alternar Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="topbar__title">
+                    <h1>Visão Geral</h1>
+                </div>
+
+                <div class="topbar__profile">
+                    <div class="profile-info">
+                        <span class="profile-name">Admin User</span>
+                        <span class="profile-role">Gestor de Energia</span>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=0D8ABC&color=fff" alt="Avatar" class="profile-avatar">
+                </div>
+            </header>
+
+            <div class="content">
+                
+                <section class="kpi-grid">
+                    <article class="card">
+                        <div class="card__header">
+                            <h3 class="card__title">Consumo Total</h3>
+                            <i class="fas fa-plug card__icon"></i>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 my-2">
-                            <div class="revinue page-one_hybrid">
-                                <div class="revinue-hedding">
-                                    <div class="w-title">
-                                        <div class="sm-chart-text">
-                                            <p class="w-value">2024</p>
-                                            <h5>Perda Demanda</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="reveniue-content">
-                                    <div id="perdaDemanda"></div>
-                                </div>
-                            </div>
+                        <div class="card__body">
+                            <span class="card__value">12.540 <small>kWh</small></span>
+                            <span class="card__trend card__trend--up">+5% este mês</span>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 my-2">
-                            <div class="revinue bonuce-one_hybrid">
-                                <div class="revinue-hedding">
-                                    <div class="w-title">
-                                        <div class="sm-chart-text">
-                                            <p class="w-value">2024</p>
-                                            <h5>Perda Reativo</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="reveniue-content">
-                                    <div id="hybrid_followers2"></div>
-                                </div>
-                            </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card__header">
+                            <h3 class="card__title">Demanda Ponta</h3>
+                            <i class="fas fa-tachometer-alt card__icon"></i>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 my-2">
-                            <div class="revinue revinue rv-status-one_hybrid">
-                                <div class="revinue-hedding">
-                                    <div class="w-title">
-                                        <div class="sm-chart-text">
-                                            <p class="w-value">2024</p>
-                                            <h5>Outros</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="reveniue-content">
-                                    <div id="hybrid_followers3"></div>
-                                </div>
-                            </div>
+                        <div class="card__body">
+                            <span class="card__value">450 <small>kW</small></span>
+                            <span class="card__trend card__trend--neutral">Dentro da meta</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card__header">
+                            <h3 class="card__title">Fator de Potência</h3>
+                            <i class="fas fa-balance-scale card__icon"></i>
+                        </div>
+                        <div class="card__body">
+                            <span class="card__value">0.98</span>
+                            <span class="card__trend card__trend--good">Excelente</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card__header">
+                            <h3 class="card__title">Custo Estimado</h3>
+                            <i class="fas fa-dollar-sign card__icon"></i>
+                        </div>
+                        <div class="card__body">
+                            <span class="card__value" id="card-custo-mensal">R$ 45.200</span>
+                            <span class="card__trend card__trend--down">-2% vs. anterior</span>
+                        </div>
+                    </article>
+                </section>
+
+                <section class="charts-grid">
+                    <div class="chart-box">
+                        <div class="chart-box__header">
+                            <h3>Índice de Perdas %</h3>
+                            <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                        </div>
+                        <div class="chart-box__body">
+                            <canvas id="IndicePerdasPerc"></canvas>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <section id="indicadores">
-            <div class="all-admin my-5">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="admin-list traffice-title mb-2" style="width: 100%; height: 500px">
-                                <p class="text-center mb-2">Custo 10 Maiores</p>
-                                <canvas id="CTotalLoja" class="mb-5"></canvas>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="admin-list traffice-title" style="width: 100%; height: 500px">
-                                <p class="text-center mb-2">Índice de Perdas %</p>
-                                <canvas id="IndicePerdasPerc" class="mb-5"></canvas>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="admin-list traffice-title" style="width: 100%; height: 500px">
-                                <p class="text-center mb-2">Índice de Eficência</p>
-                                <canvas id="IndiceEficiencia" class="mb-5"></canvas>
-                            </div>
-                        </div>
 
+                    <div class="chart-box">
+                        <div class="chart-box__header">
+                            <h3>Índice de Eficiência</h3>
+                            <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                        </div>
+                        <div class="chart-box__body">
+                            <canvas id="IndiceEficiencia"></canvas>
+                        </div>
                     </div>
-                </div>
+                </section>
+
             </div>
-    </div>
-    </section>
-    </div>
+        </main>
     </div>
 
-    </div>
-
-    <!-- jquery.min.js -->
-
-    <script src="/frontend/src/scripts/jquery.min.js"></script>
-    <script src="/frontend/src/scripts/bootstrap/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-    <script src="/frontend/src/scripts/chart/apexcharts.min.js"></script>
-    <script src="/frontend/src/scripts/chart/chart.js"></script>
-    <script src="/frontend/src/scripts/main.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Toggle Sidebar Script Simples
+        const toggleBtn = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.querySelector('.main-content');
+        
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('sidebar--collapsed');
+            mainContent.classList.toggle('main-content--expanded');
+        });
+    </script>
 </body>
-
 </html>

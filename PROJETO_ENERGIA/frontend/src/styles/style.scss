@@ -1,0 +1,375 @@
+/* =========================================
+   1. ABSTRACTS (Variáveis e Mixins)
+   ========================================= */
+
+// Paleta de Cores (Minimalista & Corporativa)
+$color-primary: #0f172a;    // Azul Profundo (Sidebar)
+$color-accent:  #3b82f6;    // Azul Vibrante (Destaques/Links)
+$color-success: #10b981;    // Verde (Indicadores positivos)
+$color-warning: #f59e0b;    // Laranja (Alertas)
+$color-danger:  #ef4444;    // Vermelho (Erros/Quedas)
+
+$color-bg-body: #f1f5f9;    // Cinza muito claro (Fundo da página)
+$color-bg-card: #ffffff;    // Branco (Cards)
+
+$color-text-main: #334155;  // Cinza escuro
+$color-text-muted: #64748b; // Cinza médio
+$color-text-light: #f8fafc; // Texto claro (para sidebar)
+
+// Tipografia
+$font-family-base: 'Roboto', sans-serif;
+$font-size-base: 16px;
+
+// Espaçamento e Layout
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$border-radius: 12px;
+$sidebar-width: 260px;
+$header-height: 70px;
+
+// Breakpoints
+$bp-mobile: 600px;
+$bp-tablet: 900px;
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin shadow-sm {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+}
+
+@mixin shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+}
+
+@mixin responsive($breakpoint) {
+    @if $breakpoint == mobile {
+        @media (max-width: $bp-mobile) { @content; }
+    }
+    @if $breakpoint == tablet {
+        @media (max-width: $bp-tablet) { @content; }
+    }
+}
+
+/* =========================================
+   2. BASE & RESET
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    background-color: $color-bg-body;
+    color: $color-text-main;
+    line-height: 1.5;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* =========================================
+   3. LAYOUT
+   ========================================= */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    width: $sidebar-width;
+    background-color: $color-primary;
+    color: $color-text-light;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+    transition: transform 0.3s ease;
+
+    // Estado colapsado (Mobile first ou via JS)
+    &--collapsed {
+        transform: translateX(-100%);
+    }
+
+    @include responsive(tablet) {
+        transform: translateX(-100%); // Escondido por padrão no tablet/mobile
+        &--collapsed {
+            transform: translateX(0); // Mostra quando a classe é removida/invertida
+        }
+    }
+
+    &__brand {
+        height: $header-height;
+        @include flex-center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        
+        span { color: $color-accent; margin-left: 5px; }
+        i { color: $color-accent; margin-right: 8px; }
+    }
+
+    &__nav {
+        flex: 1;
+        padding: $spacing-md 0;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        padding: $spacing-sm $spacing-md;
+        color: rgba(255,255,255,0.7);
+        border-left: 4px solid transparent;
+
+        &:hover, &--active {
+            background-color: rgba(255,255,255,0.05);
+            color: white;
+            border-left-color: $color-accent;
+        }
+    }
+
+    &__icon {
+        width: 24px;
+        margin-right: 12px;
+        text-align: center;
+    }
+
+    &__footer {
+        padding: $spacing-md;
+        font-size: 0.8rem;
+        text-align: center;
+        color: rgba(255,255,255,0.3);
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+}
+
+/* --- Main Content --- */
+.main-content {
+    flex: 1;
+    margin-left: $sidebar-width;
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease;
+
+    // Ajuste quando sidebar some
+    &--expanded {
+        margin-left: 0;
+    }
+
+    @include responsive(tablet) {
+        margin-left: 0; // Sem margem no mobile
+    }
+}
+
+/* =========================================
+   4. COMPONENTS
+   ========================================= */
+
+/* --- Topbar --- */
+.topbar {
+    height: $header-height;
+    background-color: $color-bg-card;
+    padding: 0 $spacing-lg;
+    @include flex-between;
+    @include shadow-sm;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+
+    &__toggle {
+        font-size: 1.2rem;
+        color: $color-text-main;
+        padding: 5px;
+        &:hover { color: $color-accent; }
+    }
+
+    &__title h1 {
+        font-size: 1.25rem;
+        font-weight: 500;
+        
+        @include responsive(mobile) {
+            display: none; // Esconde título em telas muito pequenas
+        }
+    }
+
+    &__profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        cursor: pointer;
+
+        .profile-info {
+            text-align: right;
+            line-height: 1.2;
+            
+            @include responsive(mobile) {
+                display: none;
+            }
+        }
+
+        .profile-name {
+            display: block;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .profile-role {
+            display: block;
+            font-size: 0.75rem;
+            color: $color-text-muted;
+        }
+
+        .profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+}
+
+/* --- Content Area --- */
+.content {
+    padding: $spacing-lg;
+    
+    @include responsive(mobile) {
+        padding: $spacing-sm;
+    }
+}
+
+/* --- KPI Cards Grid --- */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+}
+
+.card {
+    background: $color-bg-card;
+    padding: $spacing-md;
+    border-radius: $border-radius;
+    @include shadow-sm;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid transparent;
+
+    &:hover {
+        transform: translateY(-2px);
+        @include shadow-md;
+        border-color: rgba($color-accent, 0.2);
+    }
+
+    &__header {
+        @include flex-between;
+        margin-bottom: $spacing-sm;
+    }
+
+    &__title {
+        font-size: 0.85rem;
+        color: $color-text-muted;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+    }
+
+    &__icon {
+        color: rgba($color-primary, 0.5);
+        font-size: 1.2rem;
+        background: rgba($color-primary, 0.05);
+        padding: 8px;
+        border-radius: 8px;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    &__value {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: $color-text-main;
+        
+        small {
+            font-size: 0.9rem;
+            color: $color-text-muted;
+            font-weight: 400;
+        }
+    }
+
+    &__trend {
+        font-size: 0.8rem;
+        font-weight: 500;
+        
+        &--up { color: $color-success; }
+        &--down { color: $color-success; } // Assumindo que custo menor é bom
+        &--neutral { color: $color-warning; }
+        &--good { color: $color-accent; }
+    }
+}
+
+/* --- Charts Grid --- */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // 2 Colunas no Desktop
+    gap: $spacing-md;
+
+    @include responsive(tablet) {
+        grid-template-columns: 1fr; // 1 Coluna no Tablet/Mobile
+    }
+}
+
+.chart-box {
+    background: $color-bg-card;
+    padding: $spacing-md;
+    border-radius: $border-radius;
+    @include shadow-sm;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+        @include flex-between;
+        margin-bottom: $spacing-md;
+        
+        h3 {
+            font-size: 1.1rem;
+            color: $color-text-main;
+            font-weight: 600;
+        }
+
+        .btn-icon {
+            color: $color-text-muted;
+            padding: 5px;
+            border-radius: 4px;
+            &:hover { background: rgba(0,0,0,0.05); }
+        }
+    }
+
+    &__body {
+        flex: 1;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+}

@@ -1,0 +1,209 @@
+// Importação dos parciais (simulada aqui em um único bloco para compilação)
+@import 'variables';
+@import 'mixins';
+@import 'reset';
+
+// --- Layout Principal ---
+.dashboard-wrapper {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+// --- Sidebar ---
+.sidebar {
+  width: 260px;
+  background-color: $bg-sidebar;
+  color: $text-light;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+
+  @include respond-to(tablet) {
+    transform: translateX(-100%); // Esconde sidebar no mobile
+    &.active {
+      transform: translateX(0); // Mostra sidebar quando ativo
+    }
+  }
+
+  &__header {
+    padding: $spacing-lg;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    
+    span { color: $accent-color; }
+  }
+
+  &__nav {
+    flex: 1;
+    padding: $spacing-md 0;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: $spacing-md $spacing-lg;
+    color: rgba(255,255,255,0.7);
+    border-left: 4px solid transparent;
+
+    &:hover, &.active {
+      background-color: rgba(255,255,255,0.05);
+      color: $text-light;
+      border-left-color: $accent-color;
+    }
+
+    i {
+      margin-right: $spacing-md;
+      width: 20px;
+      text-align: center;
+    }
+  }
+}
+
+// --- Main Content ---
+.main-content {
+  flex: 1;
+  margin-left: 260px; // Largura da sidebar
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s ease-in-out;
+
+  @include respond-to(tablet) {
+    margin-left: 0; // Remove margem no mobile
+  }
+}
+
+// --- Header Superior ---
+.top-bar {
+  background-color: $bg-white;
+  padding: $spacing-md $spacing-lg;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  @include flex-between;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+
+  &__toggle {
+    display: none; // Escondido no desktop
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: $primary-color;
+
+    @include respond-to(tablet) {
+      display: block; // Visível no mobile
+    }
+  }
+
+  &__user {
+    @include flex-center;
+    gap: $spacing-md;
+    
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .user-info {
+      text-align: right;
+      @include respond-to(mobile) {
+        display: none; // Esconde nome no mobile muito pequeno
+      }
+      
+      small {
+        display: block;
+        color: $text-muted;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+// --- Dashboard Content ---
+.content-wrapper {
+  padding: $spacing-lg;
+}
+
+// Cards Grid
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); // 4 colunas no desktop
+  gap: $spacing-lg;
+  margin-bottom: $spacing-lg;
+
+  @include respond-to(tablet) {
+    grid-template-columns: repeat(2, 1fr); // 2 colunas no tablet
+  }
+
+  @include respond-to(mobile) {
+    grid-template-columns: 1fr; // 1 coluna no mobile
+  }
+}
+
+.card {
+  background: $bg-white;
+  padding: $spacing-lg;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &__title {
+    font-size: 0.9rem;
+    color: $text-muted;
+    margin-bottom: $spacing-sm;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: $primary-color;
+  }
+
+  &__icon {
+    float: right;
+    font-size: 2rem;
+    opacity: 0.2;
+    color: $primary-color;
+  }
+}
+
+// Charts Grid
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-lg;
+
+  @include respond-to(tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chart-box {
+  background: $bg-white;
+  padding: $spacing-lg;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  min-height: 400px;
+  
+  h3 {
+    margin-bottom: $spacing-lg;
+    font-size: 1.2rem;
+    color: $primary-color;
+    border-bottom: 2px solid $bg-body;
+    padding-bottom: $spacing-sm;
+  }
+}
