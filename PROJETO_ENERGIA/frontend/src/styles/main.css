@@ -1,0 +1,284 @@
+.content-wrapper {
+    margin-left: 240px;
+    margin-top: 65px;
+    transition: .5s;
+}
+
+.content-wrapper.hide {
+    margin-left: 0 !important;
+}
+
+.top-chart-earn {
+    border-radius: 5px;
+    padding-top: 15px;
+    box-shadow: -2px 3px 13px 0px #ddd;
+}
+
+.canvas#weekly {
+    height: 550px;
+}
+
+.last-month {
+    line-height: 20px;
+    text-align: center;
+}
+
+.last-month h5 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.last-month p {
+    font-size: 12px;
+    color: #777;
+}
+
+a.di-btn {
+    text-align: unset;
+    padding-top: 12px;
+}
+
+.earn {
+    margin: 12px 0;
+    font-size: 26px;
+}
+
+.earn h2 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.sale h2 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.chart-nav.active {
+    background: #fff !important;
+    color: var(--second-color1) !important;
+    border-bottom: 2px solid var(--main-color1);
+    border-radius: 0;
+}
+
+.chart-nav {
+    color: var(--second-color1);
+    padding: 0px 15px;
+}
+
+.chart-nav:hover {
+    color: var(--main-color1);
+}
+
+.chart-nav {
+    padding: 0px 15px;
+    transition: .3s;
+    border-radius: 0;
+}
+
+button#pills-week-tab:active {
+    background: #fff !important;
+}
+
+.chart-header-tab {
+    width: 65%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* ------------ top-section chart bottom row main */
+
+.bdr-cls {
+    border-radius: 1px solid #dddddd6b;
+}
+
+.wre-sec {
+    overflow: hidden;
+    border-top: 1px solid #dddddd6b;
+}
+
+.earn-wiew {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.earn-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    padding: 3px;
+    line-height: 20px;
+    font-size: 16px;
+    color: var(--white-color);
+}
+
+.wallet {
+    background: var(--main-color1);
+}
+
+.referral {
+    background: #7d12ce;
+}
+
+.sales {
+    background: #0ea3d0;
+}
+
+.earning {
+    background: #e7d12e;
+}
+
+.traffice-title {
+    text-align: left;
+    font-size: 17px;
+    font-weight: 500;
+    padding-left: 15px;
+}
+
+/* -----------Traffice chart style-----------*/
+#chart-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* -----------Small chart style-----------*/
+
+.revinue.revinue-one_hybrid {
+
+    background: linear-gradient(121deg, rgba(194, 13, 90, 1)25%, rgb(162 101 182)100%);
+
+}
+
+.page-one_hybrid {
+    background: var(--main-gradent);
+}
+
+.bonuce-one_hybrid {
+    background: linear-gradient(121deg, rgb(26 179 195)25%, rgb(25 97 206 /95%)100%);
+}
+
+.rv-status-one_hybrid {
+    background: linear-gradient(121deg, rgb(232 202 53)25%, rgb(206 125 25 /95%)100%);
+}
+
+.revinue {
+    padding-top: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.w-title {
+    display: flex;
+    padding: 0 7px 10px;
+    align-items: center;
+}
+
+.w-icon {
+    font-size: 28px;
+    color: var(--white-color);
+    padding-right: var(--md-2);
+}
+
+.sm-chart-text {
+    line-height: 20px;
+    color: var(--white-color);
+}
+
+p.w.value {
+    font-size: 16px;
+}
+
+/* ------- Admin card Style --------------- */
+
+.admin-list {
+    padding: 10px;
+    border-radius: 5px;
+    background: var(--white-color);
+    box-shadow: -2px 3px 13px 0px #ddd;
+}
+
+.col-md8{
+    width: 66%;
+}
+
+img.admin-image {
+    width: 50px;
+    border-radius: 50%;
+    height: 50px;
+}
+
+p.admin-ac-title,
+p.order-ac-title {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 0 5px;
+    display: inline-block;
+    border-bottom: 2px solid var(--main-color1);
+    line-height: 1.5;
+    margin-bottom: 13px;
+}
+
+li.admin-li {
+    display: flex;
+    align-items: center;
+    margin: 3px 0;
+    padding: 10px;
+}
+
+.admin-ac-details {
+    padding-left: 10px;
+    line-height: 18px;
+    /* display: flex; */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+}
+
+.admin-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--second-color);
+}
+
+.admin-name:hover {
+    color: var(--main-color);
+}
+
+
+p.activaty-text {
+    font-size: 11px;
+    color: #989898;
+}
+
+.status {
+    text-align: left;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+/* ------- Admin card Style End--------------- */
+
+.order-list {
+    padding: 10px;
+    border-radius: 5px;
+    background: var(--white-color);
+    box-shadow: -2px 3px 13px 0px #ddd6;
+}
+
+p.order-ac-title {
+    font-size: 15px;
+    font-weight: 500;
+    padding: 0 5px;
+    display: inline-block;
+    border-bottom: 2px solid var(--main-color1);
+    line-height: 1.5;
+    margin-bottom: 13px;
+}

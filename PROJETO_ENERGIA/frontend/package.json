@@ -1,0 +1,11 @@
+{
+  "name": "projeto-energia-frontend",
+  "version": "1.0.0",
+  "description": "Frontend do Projeto Energia",
+  "main": "src/scripts/main.js",
+  "scripts": {
+    "start": "echo \"Adicione um servidor de desenvolvimento\""
+  },
+  "author": "",
+  "license": "ISC"
+}
