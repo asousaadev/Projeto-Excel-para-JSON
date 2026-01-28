@@ -1,31 +1,19 @@
 import os
-import uvicorn
 from datetime import date, datetime
 from typing import List, Optional
 from decimal import Decimal
+
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, validator
 from sqlalchemy import (
-    create_engine,
-    Column,
-    Integer,
-    String,
-    Boolean,
-    ForeignKey,  # 'Foreignkey' foi corrigido para 'ForeignKey'
-    Numeric,
-    TIMESTAMP,
-    Date,
-    func,  # A importação 'func' movida para dentro dos parênteses
+    create_engine, Column, Integer, String, Boolean, 
+    ForeignKey, Numeric, TIMESTAMP, Date
 )
-from sqlalchemy.orm import (
-    sessionmaker,
-    declarative_base,
-    relationship,
-    Session,
-)
-from sqlalchemy.exc import IntegrityError, SQLAlchemyError 
+from sqlalchemy.orm import sessionmaker, declarative_base, relationship, Session
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError
+from sqlalchemy import func
 
 # --- Configuração de Ambiente e Banco de Dados ---
 # Usa variável de ambiente ou valor padrão para dev
