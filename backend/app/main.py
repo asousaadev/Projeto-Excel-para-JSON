@@ -31,7 +31,7 @@ class FaturaResponse(FaturaBase):
     id_cliente: int
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ClienteBase(BaseModel):
     cnpj: str
@@ -54,7 +54,7 @@ class ClienteResponse(ClienteBase):
     faturas: List[FaturaResponse] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 # --- Schemas do Dashboard ---
 class DashboardCards(BaseModel):
@@ -76,10 +76,9 @@ app = FastAPI(title="API Projeto Energia", version="1.0.0")
 
 # --- Eventos de Startup Assíncronos ---
 @app.on_event("startup")
-async def startup_event():
-    # Cria as tabelas assíncronamente ao iniciar a aplicação
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+def startup_event():
+    # Cria as tabelas de forma síncrona
+    Base.metadata.create_all(bind=engine)
 
 app.add_middleware(
     CORSMiddleware,
@@ -100,7 +99,7 @@ async def sqlalchemy_exception_handler(request, exc):
 
 # --- Endpoints CRUD Clientes ---
 
-@app.post("/clientes/", response_model=ClienteResponse, status_code=status.HTTP_201_CREATED)
+@app.post("/", response_model=ClienteResponse, status_code=status.HTTP_201_CREATED)
 def create_cliente(cliente: ClienteCreate, db: Session = Depends(get_db)):
     db_cliente = db.query(Cliente).filter(Cliente.cnpj == cliente.cnpj).first()
     if db_cliente:
@@ -112,7 +111,7 @@ def create_cliente(cliente: ClienteCreate, db: Session = Depends(get_db)):
     db.refresh(new_cliente)
     return new_cliente
 
-@app.get("/clientes/", response_model=List[ClienteResponse])
+@app.get("/", response_model=List[ClienteResponse])
 def read_clientes(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     clientes = db.query(Cliente).offset(skip).limit(limit).all()
     return clientes

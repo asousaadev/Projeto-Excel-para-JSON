@@ -1,7 +1,7 @@
 # app/models.py
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Numeric, TIMESTAMP, Date, func
 from sqlalchemy.orm import relationship
-from PROJETO_ENERGIA.backend.app.database import Base
+from app.database import Base
 
 # --- Modelos SQLAlchemy ---
 
